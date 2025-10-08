@@ -1,103 +1,103 @@
 import Image from "next/image";
+import Lanyard from "./components/Lanyard/Lanyard";
+import RotatingText from "./components/RotatingText/RotatingText";
+import SplitText from "./components/SplitText/SplitText";
+import BlurText from "./components/BlurText/BlurText";
+import AnimatedContent from "./components/AnimatedContent/AnimatedContent";
+import Particles from "./components/Particles/Particles";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="min-h-screen overflow-x-hidden bg-[#121212]">
+      <div className="absolute top-0 bottom-0 right-0 left-0 w-full h-full">
+        <Particles 
+        particleColors={['#ac3e3eff', '#a71414ff']}
+        particleCount={400}
+        particleSpread={10}
+        speed={0.1}
+        particleBaseSize={100}
+        moveParticlesOnHover={false}
+        alphaParticles={false}
+        disableRotation={false}
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      </div>
+      <div className="container border mx-auto h-screen ">
+        <div className="grid grid-cols-12">
+          <div className="col-span-6">
+            <div className="flex flex-col items-start h-screen px-10 gap-6 justify-center">
+              <AnimatedContent 
+              distance={150}
+              direction="horizontal"
+              reverse={false}
+              duration={1.2}
+              // ease="bounce.out"
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+              delay={0.3}
+              >
+                <div className="flex items-center gap-2">
+              <h1 className="text-2xl text-white font-bold">i`m </h1>
+              <RotatingText 
+                texts={['Web Developer', 'Wibu', 'Sloth', 'Gamer', 'Tech Enthusiast', 'Tea Lover', 'Cat Person', 'Douchebag']}
+                mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-2xl font-bold inline-flex"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
+                </div>
+              </AnimatedContent>
+              
+              <div className="flex flex-col items-start">
+                <SplitText 
+                text="Muhammad Rizky Abiwafa Rulyawan" 
+                className="text-2xl font-semibold text-center text-white mt-4"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+                />
+                <SplitText 
+                text="Web Developer | Frontend Engineer" 
+                className="text-2xl font-semibold text-center text-white mt-4"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+                />
+              </div>
+              <div>
+                <BlurText 
+                text="Hello! I'm a Web Developer specializing in Front-End Engineering. I'm highly enthusiastic about exploring cutting-edge technologies, particularly within the web and internet ecosystem. With a solid foundation in HTML, CSS, JavaScript, and React, I enjoy building intuitive and responsive web interfaces. I'm also proficient in MS Word and MS Excel to support productivity and data management. Outside of coding, I'm an avid gamer, anime enthusiast, and a cat lover. I believe that a balance between hard work and hobbies is the key to sustainable creativity."
+                delay={50}
+                animateBy="words"
+                direction="top"
+                className="text-base mb-8 text-white font-semibold"
+                />
+              </div>
+            </div> 
+          </div>
+          <div className="col-span-6">
+            <Lanyard position={[0, 0, 15]} gravity={[0, -30, 0]}  />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
